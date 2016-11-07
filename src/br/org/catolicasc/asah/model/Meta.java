@@ -11,7 +11,16 @@ public class Meta implements IBean{
 	@GeneratedValue
 	private Long id;
 	private String descricao;
+	private Long valor;
 	
+	public Long getValor() {
+		return valor;
+	}
+
+	public void setValor(Long valor) {
+		this.valor = valor;
+	}
+
 	public String getDescricao() {
 		return descricao;
 	}
