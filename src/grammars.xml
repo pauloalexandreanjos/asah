@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<grammars xmlns="http://wadl.dev.java.net/2009/02" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:xi="http://www.w3.org/1999/XML/xinclude">
+
+	<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+		<xs:element name="gasto" type="gasto" />
+		<xs:element name="gastos" type="gastos" />
+		<xs:element name="meta" type="meta" />
+		<xs:element name="metas" type="metas" />
+		<xs:element name="movimentacao" type="movimentacao" />
+		<xs:element name="movimentacaos" type="movimentacaos" />
+		<xs:element name="parcela" type="parcela" />
+		<xs:element name="parcelas" type="parcelas" />
+		<xs:element name="renda" type="renda" />
+		<xs:element name="rendass" type="rendass" />
+		<xs:element name="sonho" type="sonho" />
+		<xs:element name="sonhos" type="sonhos" />
+		
+		<xs:complexType name="cervejas">
+			<xs:sequence>
+				<xs:element name="link" type="jaxbLink" minOccurs="0"
+					maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+		
+		<xs:complexType name="jaxbLink">
+			<xs:sequence />
+			<xs:attribute name="href" type="xs:string" />
+			<xs:anyAttribute namespace="##other" processContents="skip" />
+		</xs:complexType>
+		
+		<xs:complexType name="Gasto">
+			<xs:sequence>
+				<xs:element name="descricao" type="xs:string" minOccurs="0" />
+				<xs:element name="data" type="xs:date" minOccurs="0" />
+				<xs:element name="parcelas" type="xs" minOccurs="0" />
+			</xs:sequence>
+		</xs:complexType>
+		
+		<xs:simpleType name="periodicidade">
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="SEMANAL" />
+				<xs:enumeration value="QUINZENAL" />
+				<xs:enumeration value="MENSAL" />
+				<xs:enumeration value="BIMESTRAL" />
+				<xs:enumeration value="TRIMESTRAL" />
+				<xs:enumeration value="ANUAL" />
+			</xs:restriction>
+		</xs:simpleType>
+		
+		<xs:simpleType name="tipo">
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="POSITIVO" />
+				<xs:enumeration value="NEGATIVO" />
+			</xs:restriction>
+		</xs:simpleType>
+		
+	</xs:schema>
+</grammars>
