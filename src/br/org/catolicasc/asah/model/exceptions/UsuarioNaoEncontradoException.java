@@ -1,4 +1,4 @@
-package br.org.catolicasc.asah.model;
+package br.org.catolicasc.asah.model.exceptions;
 
 public class UsuarioNaoEncontradoException extends RuntimeException {
 
