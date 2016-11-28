@@ -24,7 +24,7 @@ import br.org.catolicasc.asah.model.Gasto;
 import br.org.catolicasc.asah.model.exceptions.GastoJaExisteException;
 import br.org.catolicasc.asah.model.rest.Gastos;
 
-@Path("/rendas")
+@Path("/gastos")
 @Consumes({ MediaType.TEXT_XML, MediaType.APPLICATION_XML,
 		MediaType.APPLICATION_JSON })
 @Produces({ MediaType.TEXT_XML, MediaType.APPLICATION_XML,

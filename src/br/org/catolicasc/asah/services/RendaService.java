@@ -60,7 +60,7 @@ public class RendaService {
 			throw new WebApplicationException(Status.CONFLICT);
 		}
 		
-		URI uri = UriBuilder.fromPath("cervejas/{id}").build(renda.getId());
+		URI uri = UriBuilder.fromPath("rendas/{id}").build(renda.getId());
 
 		return Response.created(uri).entity(renda).build();
 	}

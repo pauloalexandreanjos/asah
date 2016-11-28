@@ -24,7 +24,7 @@ import br.org.catolicasc.asah.model.Parcela;
 import br.org.catolicasc.asah.model.exceptions.ParcelaJaExisteException;
 import br.org.catolicasc.asah.model.rest.Parcelas;
 
-@Path("/movimentacoes")
+@Path("/parcelas")
 @Consumes({ MediaType.TEXT_XML, MediaType.APPLICATION_XML,
 		MediaType.APPLICATION_JSON })
 @Produces({ MediaType.TEXT_XML, MediaType.APPLICATION_XML,

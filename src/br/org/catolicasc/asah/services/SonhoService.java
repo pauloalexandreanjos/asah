@@ -24,7 +24,7 @@ import br.org.catolicasc.asah.model.Sonho;
 import br.org.catolicasc.asah.model.exceptions.SonhoJaExisteException;
 import br.org.catolicasc.asah.model.rest.Sonhos;
 
-@Path("/movimentacoes")
+@Path("/sonhos")
 @Consumes({ MediaType.TEXT_XML, MediaType.APPLICATION_XML,
 		MediaType.APPLICATION_JSON })
 @Produces({ MediaType.TEXT_XML, MediaType.APPLICATION_XML,

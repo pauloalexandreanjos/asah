@@ -25,7 +25,7 @@ import br.org.catolicasc.asah.model.Meta;
 import br.org.catolicasc.asah.model.exceptions.MetaJaExisteException;
 import br.org.catolicasc.asah.model.rest.Metas;
 
-@Path("/rendas")
+@Path("/metas")
 @Consumes({ MediaType.TEXT_XML, MediaType.APPLICATION_XML,
 		MediaType.APPLICATION_JSON })
 @Produces({ MediaType.TEXT_XML, MediaType.APPLICATION_XML,
