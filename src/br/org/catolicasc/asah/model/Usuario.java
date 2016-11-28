@@ -3,8 +3,10 @@ package br.org.catolicasc.asah.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 
 @Entity
+@NamedQuery(name="Usuario.findByLogin", query="SELECT c FROM Usuario c WHERE c.login = :login")
 public class Usuario implements IBean{
 
 	@Id
@@ -57,5 +59,9 @@ public class Usuario implements IBean{
 	@Override
 	public void setId(Long id) {
 		this.id = id;
+	}
+	
+	public void copyFrom(Usuario user) {
+		this.nome = user.nome;
 	}
 }
