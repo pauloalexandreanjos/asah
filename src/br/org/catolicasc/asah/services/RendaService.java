@@ -41,9 +41,7 @@ public class RendaService {
 		Renda renda = rendaDao.buscaPorld(idRenda);
 		if (renda != null)
 			return renda;
-
 		throw new WebApplicationException(Status.NOT_FOUND);
-
 	}
 
 	@GET
