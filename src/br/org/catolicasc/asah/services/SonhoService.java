@@ -18,63 +18,64 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriBuilder;
 import javax.ws.rs.core.Response.Status;
 
-import br.org.catolicasc.asah.dao.GastoDao;
 import br.org.catolicasc.asah.dao.JpaDaoFactory;
-import br.org.catolicasc.asah.model.Gasto;
-import br.org.catolicasc.asah.model.exceptions.GastoJaExisteException;
-import br.org.catolicasc.asah.model.rest.Gastos;
+import br.org.catolicasc.asah.dao.SonhoDao;
+import br.org.catolicasc.asah.model.Sonho;
+import br.org.catolicasc.asah.model.exceptions.SonhoJaExisteException;
+import br.org.catolicasc.asah.model.rest.Sonhos;
 
-@Path("/rendas")
+@Path("/movimentacoes")
 @Consumes({ MediaType.TEXT_XML, MediaType.APPLICATION_XML,
 		MediaType.APPLICATION_JSON })
 @Produces({ MediaType.TEXT_XML, MediaType.APPLICATION_XML,
 		MediaType.APPLICATION_JSON })
-public class GastoService {
+public class SonhoService {
 
-	private GastoDao gastoDao = JpaDaoFactory.getInstance().getGastoDao();
+	private SonhoDao sonhoDao = JpaDaoFactory.getInstance().getSonhoDao();
 	
 	private static final int TAMANHO_PAGINA = 10;
 	
 	@GET
 	@Path("{id}")
-	public Gasto encontreGasto(@PathParam("id") Long id) {
-		Gasto gasto = gastoDao.buscaPorld(id);
-		if (gasto!= null)
-			return gasto;
+	public Sonho encontreSonho(@PathParam("id") Long id) {
+		Sonho sonho = sonhoDao.buscaPorld(id);
+		if (sonho!= null)
+			return sonho;
 		throw new WebApplicationException(Status.NOT_FOUND);
 	}
 	
 	@GET
-	public Gastos listeTodosOsGastos(@QueryParam("pagina") int pagina) {
-		List<Gasto> gastos = gastoDao.listaPaginada(pagina,
+	public Sonhos listeTodosOsSonhos(@QueryParam("pagina") int pagina) {
+		List<Sonho> movimentacoes = sonhoDao.listaPaginada(pagina,
 				TAMANHO_PAGINA);
-		return new Gastos(gastos);
+		return new Sonhos(movimentacoes);
 	}
 	
 	@POST
-	public Response criarGasto(Gasto gasto) {
+	public Response criarSonhos(Sonho sonho) {
 		
 		try {
-			gastoDao.salva(gasto);
+			sonhoDao.salva(sonho);
 			
-		} catch (GastoJaExisteException e) {
+		} catch (SonhoJaExisteException e) {
 			throw new WebApplicationException(Status.CONFLICT);
 		}
 		
-		URI uri = UriBuilder.fromPath("gastos/{id}").build(gasto.getId());
+		URI uri = UriBuilder.fromPath("sonhos/{id}").build(sonho.getId());
 
-		return Response.created(uri).entity(gasto).build();	
+		return Response.created(uri).entity(sonho).build();	
 	}
 	
 	@PUT
 	@Path("{id}")
-	public void atualizarGasto(@PathParam("id") Long id, Gasto gasto) {
-		gastoDao.atualiza(encontreGasto(id));
+	public void atualizarSonho(@PathParam("id") Long id, Sonho sonho) {
+		encontreSonho(id);
+		sonhoDao.atualiza(sonho);
 	}
 
 	@DELETE
 	@Path("{id}")
-	public void apagarGasto(@PathParam("id") Long id) {
-		gastoDao.remove(encontreGasto(id));
+	public void apagarSonho(@PathParam("id") Long id) {
+		sonhoDao.remove(encontreSonho(id));
 	}
 }

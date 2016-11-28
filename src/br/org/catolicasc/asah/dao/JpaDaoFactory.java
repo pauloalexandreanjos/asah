@@ -2,14 +2,16 @@ package br.org.catolicasc.asah.dao;
 
 public class JpaDaoFactory {
 
-	public static JpaDaoFactory instance = new JpaDaoFactory();
+	private static JpaDaoFactory instance = new JpaDaoFactory();
 	
 	private UsuarioDao usuarioDao;
+	
 	private RendaDao rendaDao;
 	private GastoDao gastoDao;
 	private MetaDao metaDao;
 	private ParcelaDao parcelaDao;
 	private SonhoDao sonhoDao;
+	private MovimentacaoDao movimentacaoDao;
 
 	private JpaDaoFactory() {}
 		
@@ -51,5 +53,11 @@ public class JpaDaoFactory {
 		if(this.sonhoDao == null)
 			this.sonhoDao = new SonhoDao();
 		return this.sonhoDao;
+	}
+	
+	public MovimentacaoDao getMovimentacaoDao(){
+		if(this.movimentacaoDao == null)
+			this.movimentacaoDao = new MovimentacaoDao();
+		return this.movimentacaoDao;
 	}
 }
