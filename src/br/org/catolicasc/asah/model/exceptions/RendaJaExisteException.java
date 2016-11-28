@@ -2,6 +2,8 @@ package br.org.catolicasc.asah.model.exceptions;
 
 public class RendaJaExisteException extends RuntimeException {
 	
+	private static final long serialVersionUID = 1L;
+
 	public RendaJaExisteException() {
 	}
 
