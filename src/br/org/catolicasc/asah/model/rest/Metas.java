@@ -8,38 +8,40 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
-import br.org.catolicasc.asah.model.Renda;
+import br.org.catolicasc.asah.model.Meta;
 
 @XmlRootElement
-public class Rendas {
+public class Metas {
 
-	private List<Renda> rendas = new ArrayList<>();
+	private List<Meta> metas = new ArrayList<>();
 
-	public Rendas() {
+	public Metas() {
+		super();
 	}
-	
-	public Rendas(List<Renda> rendas) {
-		this.rendas = rendas;
+
+	public Metas(List<Meta> metas) {
+		super();
+		this.metas = metas;
 	}
-	
+
 	@XmlTransient
-	public List<Renda> getRendas() {
-		return rendas;
+	public List<Meta> getMetas() {
+		return metas;
 	}
-	
-	public void setRendas(List<Renda> rendas) {
-		this.rendas = rendas;
+
+	public void setMetas(List<Meta> metas) {
+		this.metas = metas;
 	}
-	
+
 	@XmlElement(name="link")
 	public List<Link> getLinks() {
 		List<Link> links = new ArrayList<>();
-		for (Renda renda : getRendas()) {
+		for (Meta meta : getMetas()) {
 			
-			Link link = Link.fromPath("rendas/{id}")
-					.rel("renda")
-					.title(renda.getDescricao())
-					.build(renda.getDescricao());
+			Link link = Link.fromPath("metas/{id}")
+					.rel("meta")
+					.title(meta.getDescricao())
+					.build(meta.getDescricao());
 			links.add(link);
 		}
 		return links;

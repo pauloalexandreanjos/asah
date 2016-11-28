@@ -8,38 +8,40 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
-import br.org.catolicasc.asah.model.Renda;
+import br.org.catolicasc.asah.model.Gasto;
 
 @XmlRootElement
-public class Rendas {
+public class Gastos {
 
-	private List<Renda> rendas = new ArrayList<>();
+	private List<Gasto> gastos = new ArrayList<>();
 
-	public Rendas() {
+	public Gastos() {
+		super();
 	}
-	
-	public Rendas(List<Renda> rendas) {
-		this.rendas = rendas;
+
+	public Gastos(List<Gasto> gastos) {
+		super();
+		this.gastos = gastos;
 	}
-	
+
 	@XmlTransient
-	public List<Renda> getRendas() {
-		return rendas;
+	public List<Gasto> getGastos() {
+		return gastos;
 	}
-	
-	public void setRendas(List<Renda> rendas) {
-		this.rendas = rendas;
+
+	public void setGastos(List<Gasto> gastos) {
+		this.gastos = gastos;
 	}
 	
 	@XmlElement(name="link")
 	public List<Link> getLinks() {
 		List<Link> links = new ArrayList<>();
-		for (Renda renda : getRendas()) {
+		for (Gasto gasto : getGastos()) {
 			
-			Link link = Link.fromPath("rendas/{id}")
-					.rel("renda")
-					.title(renda.getDescricao())
-					.build(renda.getDescricao());
+			Link link = Link.fromPath("gastos/{id}")
+					.rel("gasto")
+					.title(gasto.getDescricao())
+					.build(gasto.getDescricao());
 			links.add(link);
 		}
 		return links;
