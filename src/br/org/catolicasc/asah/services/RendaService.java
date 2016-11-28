@@ -1,10 +1,13 @@
 package br.org.catolicasc.asah.services;
 
+import java.net.URI;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -12,11 +15,13 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriBuilder;
 import javax.ws.rs.core.Response.Status;
 
 import br.org.catolicasc.asah.dao.JpaDaoFactory;
 import br.org.catolicasc.asah.dao.RendaDao;
 import br.org.catolicasc.asah.model.Renda;
+import br.org.catolicasc.asah.model.exceptions.RendaJaExisteException;
 import br.org.catolicasc.asah.model.rest.Rendas;
 
 @Path("/rendas")
@@ -54,9 +59,26 @@ public class RendaService {
 		try {
 			rendaDao.salva(renda);
 			
+		} catch (RendaJaExisteException e) {
+			throw new WebApplicationException(Status.CONFLICT);
 		}
 		
-		return null;
+		URI uri = UriBuilder.fromPath("cervejas/{id}").build(renda.getId());
+
+		return Response.created(uri).entity(renda).build();
+		
 	}
 	
+	@PUT
+	@Path("{nome}")
+	public void atualizarCerveja(@PathParam("nome") Long id, Renda renda) {
+		encontreRenda(id);
+		rendaDao.atualiza(renda);
+	}
+
+	@DELETE
+	@Path("{nome}")
+	public void apagarCerveja(@PathParam("nome") Long id) {
+		rendaDao.remove(encontreRenda(id));
+	}
 }
