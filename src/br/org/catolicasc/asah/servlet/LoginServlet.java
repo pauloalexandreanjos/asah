@@ -26,8 +26,8 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-        String login = request.getParameter("login");
-        String passwd = request.getParameter("passwd");
+        String login = request.getParameter("user");
+        String passwd = request.getParameter("pass");
 
         Usuario loginUser = new Usuario();
         loginUser.setLogin(login);
@@ -38,10 +38,10 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("id", loginUser.getId());
             session.setAttribute("userName", loginUser.getNome());
             response.sendRedirect("sistema/inicio.html");
+            System.out.println("Logou!");
         } else {
             response.sendRedirect("login");
+            System.out.println("Não Logou!");
         }
-		
-		doGet(request, response);
 	}
 }

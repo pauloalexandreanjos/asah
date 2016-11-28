@@ -43,11 +43,9 @@ public class SessionFilter implements Filter {
 			httpResponse.sendRedirect("../index.html");
 		} else {
 
-			// Throwable problem = null;
 			try {
 				chain.doFilter(request, response);
 			} catch (IOException | ServletException t) {
-				// problem = t;
 				System.err.println("Erro: " + t.getMessage());
 			}
 		}

@@ -62,6 +62,7 @@ public class Usuario implements IBean{
 	}
 	
 	public void copyFrom(Usuario user) {
+		this.id = user.id;
 		this.nome = user.nome;
 	}
 }
