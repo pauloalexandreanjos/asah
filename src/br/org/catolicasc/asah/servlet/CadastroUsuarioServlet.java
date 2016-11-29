@@ -44,6 +44,6 @@ public class CadastroUsuarioServlet extends HttpServlet {
 		usuarioDao.salva(user);
 		
 		response.setStatus(HttpServletResponse.SC_CREATED);
-		response.sendRedirect("index.html");
+		response.sendRedirect("login.html");
 	}
 }

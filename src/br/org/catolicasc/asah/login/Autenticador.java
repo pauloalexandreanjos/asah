@@ -12,9 +12,6 @@ public class Autenticador {
 
 	public static boolean autenticarUsuario(Usuario usuario) {
 
-		System.out.println(usuario.getLogin());
-		System.out.println(usuario.getSenha());
-		
 		try {
 			Usuario user = usuarioDao.findByLogin(usuario.getLogin());
 

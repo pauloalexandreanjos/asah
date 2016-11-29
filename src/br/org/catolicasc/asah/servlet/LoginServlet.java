@@ -20,8 +20,7 @@ public class LoginServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("GET!");
-		response.sendRedirect("index.html");
+		response.sendRedirect("login.html");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -37,9 +36,8 @@ public class LoginServlet extends HttpServlet {
             HttpSession session = request.getSession(true);
             session.setAttribute("id", loginUser.getId());
             session.setAttribute("userName", loginUser.getNome());
-            response.sendRedirect("sistema/inicio.html");
         } else {
-            response.sendRedirect("login");
+        	response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         }
 	}
 }
