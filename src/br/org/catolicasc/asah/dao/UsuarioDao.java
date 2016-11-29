@@ -7,10 +7,19 @@ import br.org.catolicasc.asah.model.Usuario;
 
 public class UsuarioDao extends JpaDaoBase<Usuario>{
 
-	public Usuario findByLogin(String login) throws NoResultException{
+	public Usuario findByLogin(String login) {
+		
+		Usuario user = null;
 		
 		TypedQuery<Usuario> query = em.createNamedQuery("Usuario.findByLogin", Usuario.class);
 		query.setParameter("login", login);
-		return query.getSingleResult();
+		
+		try {
+			user = query.getSingleResult();
+		} catch (NoResultException e) {
+			
+		}
+		
+		return user;
 	}
 }

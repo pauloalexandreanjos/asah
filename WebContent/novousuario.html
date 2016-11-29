@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+<script src="jquery.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script>
+	function getParametros() {
+		var url = window.location.href;
+		var parametrosDaUrl = url.split("?")[1];
+		var listaDeParametros = parametrosDaUrl.split("&");
+		return listaDeParametros;
+	}
+	
+	$().ready(function() {
+	    
+	    $("#cadastraForm").submit(function(e)
+	    {
+	        var postData = $(this).serializeArray();
+	        var formURL = $(this).attr("action");
+	        $.ajax( {
+	            url : formURL,
+	            type: "POST",
+	            data : postData,
+	            error: function(jqXHR, textStatus, errorThrown) {
+	                $("#cadastraError").show();
+	            }
+	        });
+	        e.preventDefault();
+	    });
+	});
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="container">
+		<div class="panel panel-primary">
+			<div class="panel-heading">Novo Usuário</div>
+			<div class="panel-body">
+				<form action="novousuario" id="cadastraForm">
+					<div class="form-group">
+						<label>Usuario</label><input class="form-control" type="text"
+							name="user"> <label>Senha</label><input
+							class="form-control" type="password" name="pass"> <label>Nome</label><input
+							class="form-control" type="text" name="nome"><br>
+						<button class="btn btn-primary">Criar</button>
+					</div>
+				</form>
+			</div>
+			<div class="panel-footer">
+				<div class="alert alert-danger alert-dismissible" id="cadastraError" role="alert" style="display: none;" >
+					<button type="button" class="close" data-dismiss="alert"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					Usuário já existe!
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
