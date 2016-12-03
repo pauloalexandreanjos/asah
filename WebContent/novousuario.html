@@ -32,15 +32,33 @@
 	        });
 	        e.preventDefault();
 	    });
+	    
+	    $("#login").click( function() {
+			window.location.assign("login.html");
+		});
 	});
 </script>
-<title>Insert title here</title>
+<style>
+	.container {
+		margin-top: 20px;
+		max-width: 500px;
+	}
+	.panel-heading{
+		text-align: center;
+	}
+	#login {
+		display:inline;
+		margin-bottom: 20px;
+	}
+</style>
+<title>Cadastre-se</title>
 </head>
 <body>
 	<div class="container">
 		<div class="panel panel-primary">
 			<div class="panel-heading">Novo Usuário</div>
 			<div class="panel-body">
+			<button class="btn btn-default" id="login"><span class="glyphicon glyphicon-log-in"></span> Login</button>
 				<form action="novousuario" id="cadastraForm">
 					<div class="form-group">
 						<label>Usuario</label><input class="form-control" type="text"
