@@ -25,7 +25,10 @@
 	            data : postData,
 	            error: function(jqXHR, textStatus, errorThrown) {
 	                $("#cadastraError").show();
-	            }
+	            },
+	        	success : function() {
+					window.location.assign("login.html");
+				}
 	        });
 	        e.preventDefault();
 	    });
