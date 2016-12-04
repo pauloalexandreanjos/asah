@@ -3,10 +3,15 @@ package br.org.catolicasc.asah.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import br.org.catolicasc.asah.enums.Periodo;
 
 @Entity
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Renda implements IBean{
 
 	@Id
@@ -49,7 +54,6 @@ public class Renda implements IBean{
 
 	@Override
 	public Long getId() {
-		// TODO Auto-generated method stub
 		return id;
 	}
 

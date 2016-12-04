@@ -9,8 +9,19 @@
 	type="image/x-icon">
 <link rel="icon" href="../favicon/favicon.ico" type="image/x-icon">
 <style>
+	body {
+		background-image: url("../img/vegas.png");
+		background-size: cover;
+	}
+	.navbar {
+		border-radius: 0px;
+		border-bottom-right-radius: 20px;
+	}
 	.navbar-default {
-		background-color: #dadada;
+		background-color: #dadada; 
+	}
+	.container {
+		margin-top: 20px;
 	}
 	#btn-home {
 		color: #4286f4;
@@ -19,20 +30,11 @@
 	#btn-home:hover {
 		color: #254d8c;
 	}
-	.container {
-		margin-top: 20px;
-	}
-	body {
-		background-image: url("../img/vegas.png");
-		background-size: cover;
-	}
 </style>
 <title>ASAH Gastos</title>
 </head>
 <body>
-	<div class="container">
-		<div class="panel panel-primary">
-				<nav class="navbar navbar-default">
+<nav class="navbar navbar-default">
 					<div class="container-fluid">
 						<div class="navbar-header">
 							<button type="button" class="navbar-toggle collapsed"
@@ -63,6 +65,10 @@
 						</div>
 					</div>
 				</nav>
+	<div class="container">
+	
+		<div class="panel panel-primary">
+				
 			<!-- /div  -->
 			<div class="panel-body"></div>
 			<div class="panel-footer"></div>

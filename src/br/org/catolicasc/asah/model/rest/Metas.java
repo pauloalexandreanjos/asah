@@ -40,8 +40,8 @@ public class Metas {
 			
 			Link link = Link.fromPath("metas/{id}")
 					.rel("meta")
-					.title(meta.getDescricao())
-					.build(meta.getDescricao());
+					.title(meta.getId().toString())
+					.build(meta.getId().toString());
 			links.add(link);
 		}
 		return links;

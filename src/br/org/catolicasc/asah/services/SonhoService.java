@@ -70,6 +70,7 @@ public class SonhoService {
 	@Path("{id}")
 	public void atualizarSonho(@PathParam("id") Long id, Sonho sonho) {
 		encontreSonho(id);
+		sonho.setId(id);
 		sonhoDao.atualiza(sonho);
 	}
 

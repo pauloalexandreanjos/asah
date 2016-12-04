@@ -38,8 +38,8 @@ public class Rendas {
 			
 			Link link = Link.fromPath("rendas/{id}")
 					.rel("renda")
-					.title(renda.getDescricao())
-					.build(renda.getDescricao());
+					.title(renda.getId().toString())
+					.build(renda.getId().toString());
 			links.add(link);
 		}
 		return links;

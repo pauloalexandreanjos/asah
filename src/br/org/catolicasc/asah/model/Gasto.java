@@ -7,8 +7,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
+import br.org.catolicasc.asah.adapter.DateAdapter;
 
 @Entity
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Gasto implements IBean {
 
 	@Id
@@ -18,6 +26,8 @@ public class Gasto implements IBean {
 	
 	@OneToMany
 	private List<Parcela> parcelas;
+	
+	@XmlJavaTypeAdapter(DateAdapter.class)
 	private Date data;
 	
 	public void setDescricao(String login) {

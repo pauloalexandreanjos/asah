@@ -46,9 +46,9 @@ public class RendaService {
 
 	@GET
 	public Rendas listeTodasAsRendas(@QueryParam("pagina") int pagina) {
-		List<Renda> cervejas = rendaDao.listaPaginada(pagina,
+		List<Renda> rendas = rendaDao.listaPaginada(pagina,
 				TAMANHO_PAGINA);
-		return new Rendas(cervejas);
+		return new Rendas(rendas);
 	}
 	
 	@POST
