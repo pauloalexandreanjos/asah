@@ -69,6 +69,8 @@ public class GastoService {
 	@PUT
 	@Path("{id}")
 	public void atualizarGasto(@PathParam("id") Long id, Gasto gasto) {
+		encontreGasto(id);
+		gasto.setId(id);
 		gastoDao.atualiza(encontreGasto(id));
 	}
 

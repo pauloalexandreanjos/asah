@@ -20,7 +20,6 @@ import javax.ws.rs.core.Response.Status;
 
 import br.org.catolicasc.asah.dao.JpaDaoFactory;
 import br.org.catolicasc.asah.dao.MetaDao;
-import br.org.catolicasc.asah.model.Gasto;
 import br.org.catolicasc.asah.model.Meta;
 import br.org.catolicasc.asah.model.exceptions.MetaJaExisteException;
 import br.org.catolicasc.asah.model.rest.Metas;
@@ -38,7 +37,7 @@ public class MetaService {
 	
 	@GET
 	@Path("{id}")
-	public Meta encontreGasto(@PathParam("id") Long id) {
+	public Meta encontreMeta(@PathParam("id") Long id) {
 		Meta meta = metaDao.buscaPorld(id);
 		if (meta!= null)
 			return meta;
@@ -69,13 +68,15 @@ public class MetaService {
 	
 	@PUT
 	@Path("{id}")
-	public void atualizarMeta(@PathParam("id") Long id, Gasto gasto) {
-		metaDao.atualiza(encontreGasto(id));
+	public void atualizarMeta(@PathParam("id") Long id, Meta meta) {
+		encontreMeta(id);
+		meta.setId(id);
+		metaDao.atualiza(meta);
 	}
 
 	@DELETE
 	@Path("{id}")
 	public void apagarMeta(@PathParam("id") Long id) {
-		metaDao.remove(encontreGasto(id));
+		metaDao.remove(encontreMeta(id));
 	}
 }

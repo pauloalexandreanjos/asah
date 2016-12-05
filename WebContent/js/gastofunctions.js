@@ -140,16 +140,18 @@ function listarParcelas(gasto) {
 		success : function(data) {
 
 			$('#gridParcela tr:gt(0)').remove();
-			if ($.isArray(data.parcelas.link)) {
-				for (var i = 0; i < data.parcelas.link.length; i++) {
-					var link = data.parcelas.link[i]['@href'];
+			
+			if (data.parcelas != "") {
+				if ($.isArray(data.parcelas.link)) {
+					for (var i = 0; i < data.parcelas.link.length; i++) {
+						var link = data.parcelas.link[i]['@href'];
+						segueLinkParcela(link);
+					}
+				} else {
+					var link = data.parcelas.link['@href'];
 					segueLinkParcela(link);
 				}
-			} else {
-				var link = data.parcelas.link['@href'];
-				segueLinkParcela(link);
 			}
-
 		},
 		error : function(data) {
 			alert("Erro na invocação");
@@ -191,7 +193,6 @@ function apagaGasto(id) {
 			listarGastos();
 		},
 		error : function(data) {
-			console.log(data);
 			alert("Ocorreu um erro: " + data.status + " " + data.statusText);
 		}
 	});
@@ -202,10 +203,9 @@ function apagaParcela(id,gasto) {
 		url : hostService + 'parcelas/' + id,
 		type : 'DELETE',
 		success : function(data) {
-			listarParcelas(gasto);
+			listarParcelas(gasto);			
 		},
 		error : function(data) {
-			console.log(data);
 			alert("Ocorreu um erro: " + data.status + " " + data.statusText);
 		}
 	});
@@ -307,4 +307,8 @@ function adicionaParcelaNovaAoGrid(parcela) {
 	lin.append(col4);
 	
 	$("#gridParcela").append(lin);
+}
+
+function limparParcelas() {
+	$('#gridParcela tr:gt(0)').remove();
 }
