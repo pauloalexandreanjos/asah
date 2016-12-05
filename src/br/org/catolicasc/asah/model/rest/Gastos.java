@@ -40,8 +40,8 @@ public class Gastos {
 			
 			Link link = Link.fromPath("gastos/{id}")
 					.rel("gasto")
-					.title(gasto.getDescricao())
-					.build(gasto.getDescricao());
+					.title(gasto.getId().toString())
+					.build(gasto.getId().toString());
 			links.add(link);
 		}
 		return links;

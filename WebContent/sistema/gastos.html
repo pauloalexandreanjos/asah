@@ -1,78 +1,56 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-<script src="../jquery.min.js"></script>
-<script src="../bootstrap/js/bootstrap.min.js"></script>
-<link rel="shortcut icon" href="../favicon/favicon.ico"
-	type="image/x-icon">
-<link rel="icon" href="../favicon/favicon.ico" type="image/x-icon">
-<style>
-	body {
-		background-image: url("../img/vegas.png");
-		background-size: cover;
-	}
-	.navbar {
-		border-radius: 0px;
-		border-bottom-right-radius: 20px;
-	}
-	.navbar-default {
-		background-color: #dadada; 
-	}
-	.container {
-		margin-top: 20px;
-	}
-	#btn-home {
-		color: #4286f4;
-		min-width: 22px;
-	}
-	#btn-home:hover {
-		color: #254d8c;
-	}
-</style>
-<title>ASAH Gastos</title>
-</head>
-<body>
-<nav class="navbar navbar-default">
-					<div class="container-fluid">
-						<div class="navbar-header">
-							<button type="button" class="navbar-toggle collapsed"
-								data-toggle="collapse"
-								data-target="#bs-example-navbar-collapse-1"
-								aria-expanded="false">
-								<span class="sr-only">Toggle navigation</span> <span
-									class="icon-bar"></span> <span class="icon-bar"></span> <span
-									class="icon-bar"></span>
-							</button>
-							<a class="navbar-brand" href="inicio.html"><span
-								class="glyphicon glyphicon-home blue" id="btn-home"></span></a>
-						</div>
-						<div class="collapse navbar-collapse"
-							id="bs-example-navbar-collapse-1">
-							<ul class="nav navbar-nav">
-								<li><a href="relatorios.html">Relatórios</a></li>
-								<li><a href="rendas.html">Renda</a></li>
-								<li class="active"><a href="gastos.html">Gasto<span
-										class="sr-only">(current)</span></a></li>
-								<li><a href="sonhos.html">Sonho</a></li>
-								<li><a href="metas.html">Meta</a></li>
-								<li><a href="#">Movimentação</a></li>
-							</ul>
-							<ul class="nav navbar-nav navbar-right">
-								<li><a href="../logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-							</ul>
-						</div>
-					</div>
-				</nav>
-	<div class="container">
-	
-		<div class="panel panel-primary">
-				
-			<!-- /div  -->
-			<div class="panel-body"></div>
-			<div class="panel-footer"></div>
-		</div>
+<form id="gastoForm">
+	<div class="form-group">
+		<label>Id</label><input name="id" type="text" id="id-gasto"><br> <label>Descri&#231a&#771o</label><input
+			name="descricao" type="text"><br>
+		<button class="btn btn-primary" type="button"
+			onclick="adicionaGasto();">Salvar</button>
+		<button class="btn btn-default" type="reset">Limpar</button>
+		<!-- Lembrar de também limpar o grid de parcelas -->
 	</div>
-</body>
-</html>
+</form>
+<div class="panel panel-default">
+	<!-- Default panel contents -->
+	<div class="panel-heading">Parcelas do Gasto</div>
+	<div class="panel-body">
+		<form id="parcelaForm">
+			<div class="form-group">
+				<label>Id</label><input name="id" type="text"><br>
+				<label>Valor</label><input name="valor" type="number"><br>
+				<label>Data</label><input name="data" type="date"><br>
+				<button class="btn btn-primary" type="button" onclick="adicionaParcela();">Adicionar</button>
+			</div>
+		</form>
+	</div>
+	<table id="gridParcela" class="table">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Valor</th>
+				<th>Data</th>
+				<th>#</th>
+			</tr>
+		</thead>
+		<tr>
+			<td colspan="4">Carregando...</td>
+		</tr>
+	</table>
+</div>
+<div class="panel panel-default">
+	<!-- Default panel contents -->
+	<div class="panel-heading">Gastos Cadastrados</div>
+	<table id="grid" class="table">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Descri&#231a&#771o</th>
+				<th>#</th>
+			</tr>
+		</thead>
+		<tr>
+			<td colspan="3">Carregando...</td>
+		</tr>
+	</table>
+</div>
+<script>
+	listarGastos();
+</script>

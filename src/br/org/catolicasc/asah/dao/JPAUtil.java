@@ -15,5 +15,4 @@ public class JPAUtil {
 	public static void main(String[] args) {
 		JPAUtil.getEntityManager();
 	}
-	
 }

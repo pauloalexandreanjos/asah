@@ -51,6 +51,13 @@ public class ParcelaService {
 		return new Parcelas(movimentacoes);
 	}
 	
+	@GET
+	@Path("gasto/{id}")
+	public Parcelas listeParcelasGasto(@PathParam("id") Long gasto) {
+		List<Parcela> movimentacoes = parcelaDao.listarParcelasGasto(gasto);
+		return new Parcelas(movimentacoes);
+	}
+	
 	@POST
 	public Response criarParcela(Parcela parcela) {
 		
